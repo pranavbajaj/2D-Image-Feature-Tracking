@@ -249,37 +249,37 @@ Default Attribute:
 
 ### MP.7 Performance Evaluation 1: Number of Keypoints on the preceding vechicle. 
 
-<img src="images/Task_7.png" />
+<img src="images/Task_7.png" width="820" height="248" />
 
 ### Mp.8  Performance Evaluation 2
 
 #### A. SHITOMASI detector. 
 
-<img src="images/Task_8_SHITOMASI.png" />
+<img src="images/Task_8_SHITOMASI.png" width="820" height="248" />
 
 #### B. HARRIS detector. 
 
-<img src="images/Task_8_HARRIS.png" />
+<img src="images/Task_8_HARRIS.png" width="820" height="248" />
 
 #### C. FAST detector.
 
-<img src="images/Task_8_FAST.png" />
+<img src="images/Task_8_FAST.png" width="820" height="248" />
 
 #### D. BRISK detector. 
 
-<img src="images/Task_8_BRISK.png" />
+<img src="images/Task_8_BRISK.png" width="820" height="248" />
 
 #### E. ORB detector. 
 
-<img src="images/Task_8_ORB.png" />
+<img src="images/Task_8_ORB.png" width="820" height="248" />
 
 #### F. AKAZE detector. 
 
-<img src="images/Task_8_AKAZE.png" />
+<img src="images/Task_8_AKAZE.png" width="820" height="248" />
 
 #### G. SIFT detector
 
-<img src="images/Task_8_SIFT.png" />
+<img src="images/Task_8_SIFT.png" width="820" height="248" />
 
 
 
@@ -287,7 +287,7 @@ Default Attribute:
 
 Note: The performance is evaluated only in terms of speed, not accuracy. 
  
-<img src="images/Task_9.png" />
+<img src="images/Task_9.png" width="820" height="248" />
 
 
 * FAST is the fasted detector for the list. 
