@@ -34,20 +34,20 @@ See the classroom instruction and code comments for more details on each of thes
 4. Run it: `./2D_feature_tracking`.
 
 
-#Project Rubrics
+# Project Rubrics
  
 
-###MP.1 Data Buffer
+### MP.1 Data Buffer
 
 * To optimize the loading process for the images, a data buffer has been implemented.  
   * The new data arrives, it is added(.push_back()) at the end of a vector; named "dataBuffer".   
   * If the "dataBuffer" size increase more than 2, the oldest one is deleted (.erase()) and then the new one is added(.puch) at the end of the vector. 
   * The above cycle goes one until all the data has been processed. 
 
-###MP.2 Keypoint Detection
+### MP.2 Keypoint Detection
 
-*Following detector are used: SHITOMASI, HARRIS, FAST, BRISK, ORB, AKAZE, and SIFT. 
-*To implement the above detectors, OpenCV libraries are used. 
+* Following detector are used: SHITOMASI, HARRIS, FAST, BRISK, ORB, AKAZE, and SIFT. 
+* To implement the above detectors, OpenCV libraries are used. 
  
 Note: For SHITOMASI(detKeypointsShiTomasi()) and HARRIS(detKeypointsHarris()), spereate function is declared in matching2D_Student.cpp code, where as rest of the detector are declared under one function(detKeypointsModer())
 
@@ -92,7 +92,7 @@ Attribute Passed:
 * type-> cv::FastFeatureDetector::TYPE_9_16;
 
 
-####"BRISK": 
+#### "BRISK": 
 detector = cv::BRISK::create();		
 detector->detect(img, keypoints);
 
@@ -101,7 +101,7 @@ Default Attribute:
 * int octaves = 3;
 
 
-####"SIFT": 
+#### "SIFT": 
 detector = cv::xfeatures2d::SIFT::create();
 detector->detect(img, keypoints);
 
@@ -113,7 +113,7 @@ Default Attribute:
 * double edgeThreshold = 10; // The threshold used to filter out edge-like features.
 * double sigma = 1.6; // The sigma of the Gaussian applied to the input image at the octave.
 
-####"ORB": 
+#### "ORB": 
 detector = cv::ORB::create(nfeatures);
 detector->detect(img, keypoints);
 
@@ -131,7 +131,7 @@ Default Attribute:
 * int   fastThreshold = 20;  // The FAST threshold.
 
 
-####"AKAZE": 
+#### "AKAZE": 
 detector = cv::AKAZE::create();
 detector->detect(img, keypoints);
 
@@ -146,19 +146,19 @@ Default Attribute:
     							  //DIFF_WEICKERT or DIFF_CHARBONNIER.
 		
 
-###MP.3 Keypoints Removal
+### MP.3 Keypoints Removal
 * As we are only interested in the keypoint which are on the preceding vehicle, the rest of the keypoints are removed 
 * Region of interest (ROI) is specified with cv::Rect function. (Cx = 535, Cy = 180, Width = 180, Height = 150)
 * Loop through all the keypoints and all the keypoints which are inside the ROI are added to the new list. 
 
-###MP.4 Keypoint Descriptor
+### MP.4 Keypoint Descriptor
 
 * Following Keypoint Descriptor are used BRIEF, ORB, FREAK, AKAZE and SIFT
 * To implement the above descriptor OpenCV libraries are used. 
 
 Note: All the descriptor are declared inside "descKeypoints()" function. 
 
-####"BRISK": 
+#### "BRISK": 
 extractor = cv::BRISK::create(threshold, octaves, patternScale);
 extractor->compute(img, keypoints, descriptors);
 
@@ -167,7 +167,7 @@ Attribute Passed:
 * int octaves = 3;   // detection octaves (use 0 to do single scale)
 * float patternScale = 1.0f;  // apply this scale to the pattern used for sampling the neighbourhood of a keypoint.
 
-####"BRIEF": 
+#### "BRIEF": 
 extractor = cv::xfeatures2d::BriefDescriptorExtractor::create();
 extractor->compute(img, keypoints, descriptors);
 
@@ -175,7 +175,7 @@ Default Attribute:
 * int 	bytes = 32,
 * bool 	use_orientation = false
 
-####"SIFT":
+#### "SIFT":
 extractor = cv::xfeatures2d::SIFT::create();
 extractor->compute(img, keypoints, descriptors);
 
@@ -188,7 +188,7 @@ Default Attribute:
 * double sigma = 1.6; // The sigma of the Gaussian applied to the input image at the octave #0.
 
 
-####"orb":
+#### "ORB":
 extractor = cv::ORB::create(nfeatures);
 extractor->compute(img, keypoints, descriptors);
 
@@ -204,7 +204,7 @@ Default Attribute:
 * int   patchSize = 31;      // Size of the patch used by the oriented BRIEF descriptor.
 * int   fastThreshold = 20;  // The FAST threshold.
 
-####"FREAK": 
+#### "FREAK": 
 extractor = cv::xfeatures2d::FREAK::create();
 extractor->compute(img, keypoints, descriptors);
 
@@ -215,7 +215,7 @@ Default Attribute:
 * int	nOctaves = 4;                     // Number of octaves covered by the detected keypoints.
 * const std::vector< int > & 	selectedPairs = std::vector< int >(); // (Optional) user defined selected pairs indexes,
 
-####"AKAZE":
+#### "AKAZE":
 extractor = cv::AKAZE::create();
 extractor->compute(img, keypoints, descriptors);
 
@@ -228,7 +228,7 @@ Default Attribute:
 * int   nOctaveLayers = 4;          // Default number of sublevels per scale level.
 * auto  diffusivity = cv::KAZE::DIFF_PM_G2; // Diffusivity type. DIFF_PM_G1, DIFF_PM_G2,
      							  //                   DIFF_WEICKERT or DIFF_CHARBONNIER.
-###MP.5 Descriptor Matching. 
+### MP.5 Descriptor Matching. 
 
 * FLANN: "fast library for approximate nearest neighbors". FLANN trains an indexing structure for walking through potential matching candidates that is created using concepts from machine learning. The library builds a very efficient data structure (a KD-tree) to search for matching pairs and avoids the exhaustive search of the brute force approach. It is therefore faster while the results are still very good, depending on the matching parameters.
 
@@ -236,7 +236,7 @@ Default Attribute:
 
 * In this project, k is set to 2. 
 
-###MP.6 Descriptor Distance Ratio
+### MP.6 Descriptor Distance Ratio
 
 * In K-Nearest-Neighbor matching method, for each descriptor(keypoint) in the source image, K=2 best matches are found in the reference image. 
 * The ratio between the two descriptor distances is computed. 
@@ -247,43 +247,43 @@ Default Attribute:
 
 <img src="images/total_points_detected.png" />
 
-###MP.7 Performance Evaluation 1: Number of Keypoints on the preceding vechicle. 
+### MP.7 Performance Evaluation 1: Number of Keypoints on the preceding vechicle. 
 
 <img src="images/Task_7.png" />
 
-###Mp.8  Performance Evaluation 2
+### Mp.8  Performance Evaluation 2
 
-####A. SHITOMASI detector. 
+#### A. SHITOMASI detector. 
 
 <img src="images/Task_8_SHITOMASI.png" />
 
-####B. HARRIS detector. 
+#### B. HARRIS detector. 
 
 <img src="images/Task_8_HARRIS.png" />
 
-####c. FAST detector.
+#### C. FAST detector.
 
 <img src="images/Task_8_FAST.png" />
 
-####D. BRISK detector. 
+#### D. BRISK detector. 
 
 <img src="images/Task_8_BRISK.png" />
 
-####E. ORB detector. 
+#### E. ORB detector. 
 
 <img src="images/Task_8_ORB.png" />
 
-####F. AKAZE detector. 
+#### F. AKAZE detector. 
 
 <img src="images/Task_8_AKAZE.png" />
 
-####G. SIFT detector
+#### G. SIFT detector
 
 <img src="images/Task_8_SIFT.png" />
 
 
 
-###MP.9 Performance Evaluation 3. Time taken for keypoint detection and descriptor extraction.
+### MP.9 Performance Evaluation 3. Time taken for keypoint detection and descriptor extraction.
 
 Note: The performance is evaluated only in terms of speed, not accuracy. 
  
