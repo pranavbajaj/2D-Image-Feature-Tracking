@@ -243,7 +243,7 @@ Default Attribute:
 * The computed value is compared with some threshold. 
 * If the computed value is less than the threshold, the best match in the reference image is accepted. But if the computed value is more than the threshold, the two descriptors from the reference image are considered ambiguous and the match is discarded 
 
-### Total Number of Keypoints detected by each of the detectors(SHITOMASI, HARRIS, FAST, BRISK, ORB, AKAZE, and SIFT.) accross all the 10 images. Additionally average time required for the detector and avarage size of the neighbourhood is also included. 
+### Total Number of Keypoints detected by each of the detectors(SHITOMASI, HARRIS, FAST, BRISK, ORB, AKAZE, and SIFT.) across all the 10 images. Additionally, the average time required for the detector, and the average size of the neighborhood is also included.
 
 <img src="images/total_points_detected.PNG" width="820" height="248" />
 
