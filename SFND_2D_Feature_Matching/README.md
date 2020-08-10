@@ -55,15 +55,15 @@ Note: For SHITOMASI(detKeypointsShiTomasi()) and HARRIS(detKeypointsHarris()), s
 cv::goodFeaturesToTrack(img, corners, maxCorners, qualityLevel, minDistance, cv::Mat(), blockSize, false, k);
 		
 Attributes Passed:
-		*img: input image data 		
-		*vector<cv::Point2f> corners;
-		*qualityLevel - minimal accepted quality of image corners; double qualityLevel = 0.01; 
-		*int blockSize = 4;    //  size of an average block for computing a derivative covariation matrix over each pixel neighborhood
-		*double maxOverlap = 0.0; // max. permissible overlap between two features in %
-		*double minDistance = (1.0 - maxOverlap) * blockSize;
-		*int maxCorners = img.rows * img.cols / max(1.0, minDistance); // max. num. of keypoints
-		*false indicates that  cv::goodFeaturesToTrack() should work on SHITOMASI algorithm. 
-		*double k = 0.04;
+		* img: input image data 		
+		* vector<cv::Point2f> corners;
+		* qualityLevel - minimal accepted quality of image corners; double qualityLevel = 0.01; 
+		* int blockSize = 4;    //  size of an average block for computing a derivative covariation matrix over each pixel neighborhood
+		* double maxOverlap = 0.0; // max. permissible overlap between two features in %
+		* double minDistance = (1.0 - maxOverlap) * blockSize;
+		* int maxCorners = img.rows * img.cols / max(1.0, minDistance); // max. num. of keypoints
+		* false indicates that  cv::goodFeaturesToTrack() should work on SHITOMASI algorithm. 
+		* double k = 0.04;
  
 
 
@@ -71,15 +71,15 @@ Attributes Passed:
 cv::goodFeaturesToTrack(img, corners, maxCorners, qualityLevel, minDistance, cv::Mat(), blockSize, true, k);
 
 Attributes Passed:
-		*img: input image data 		
-		*vector<cv::Point2f> corners;
-		*qualityLevel - minimal accepted quality of image corners; double qualityLevel = 0.01; 
-		*int blockSize = 4;    //  size of an average block for computing a derivative covariation matrix over each pixel neighborhood
-		*double maxOverlap = 0.0; // max. permissible overlap between two features in %
-		*double minDistance = (1.0 - maxOverlap) * blockSize;
-		*int maxCorners = img.rows * img.cols / max(1.0, minDistance); // max. num. of keypoints
-		*true indicates that  cv::goodFeaturesToTrack() should work on HARRIS algorithm. 
-		*double k = 0.04;
+		* img: input image data 		
+		* vector<cv::Point2f> corners;
+		* qualityLevel - minimal accepted quality of image corners; double qualityLevel = 0.01; 
+		* int blockSize = 4;    //  size of an average block for computing a derivative covariation matrix over each pixel neighborhood
+		* double maxOverlap = 0.0; // max. permissible overlap between two features in %
+		* double minDistance = (1.0 - maxOverlap) * blockSize;
+		* int maxCorners = img.rows * img.cols / max(1.0, minDistance); // max. num. of keypoints
+		* true indicates that  cv::goodFeaturesToTrack() should work on HARRIS algorithm. 
+		* double k = 0.04;
  
 
 #### "FAST": 
@@ -87,9 +87,9 @@ detector = cv::FastFeatureDetector::create(threshold, bNMS, type);
 detector->detect(img, keypoints);
 
 Attribute Passed: 
-		*int threshold = 30;
-		*bool bNMS = true; (NonMaxSuppression)
-		*type-> cv::FastFeatureDetector::TYPE_9_16;
+		* int threshold = 30;
+		* bool bNMS = true; (NonMaxSuppression)
+		* type-> cv::FastFeatureDetector::TYPE_9_16;
 
 
 ####"BRISK": 
@@ -97,8 +97,8 @@ detector = cv::BRISK::create();
 detector->detect(img, keypoints);
 
 Default Attribute: 
-		*int thresh = 30;
-		*int octaves = 3;
+		* int thresh = 30;
+		* int octaves = 3;
 
 
 ####"SIFT": 
@@ -106,29 +106,29 @@ detector = cv::xfeatures2d::SIFT::create();
 detector->detect(img, keypoints);
 
 Default Attribute:
-		*int nfeatures = 0; // The number of best features to retain.
-    		*int nOctaveLayers = 3; // The number of layers in each octave. 3 is the value used in D. Lowe paper.
+		* int nfeatures = 0; // The number of best features to retain.
+    		* int nOctaveLayers = 3; // The number of layers in each octave. 3 is the value used in D. Lowe paper.
                                         // The contrast threshold used to filter out weak features in semi-uniform (low-contrast) regions.
-    		*double contrastThreshold = 0.04;
-    		*double edgeThreshold = 10; // The threshold used to filter out edge-like features.
-    		*double sigma = 1.6; // The sigma of the Gaussian applied to the input image at the octave.
+    		* double contrastThreshold = 0.04;
+    		* double edgeThreshold = 10; // The threshold used to filter out edge-like features.
+    		* double sigma = 1.6; // The sigma of the Gaussian applied to the input image at the octave.
 
 ####"ORB": 
 detector = cv::ORB::create(nfeatures);
 detector->detect(img, keypoints);
 
 Attribute Passed: 
-		*int nfeatures = "1000"  // The maximum number of features to retain.
+		* int nfeatures = "1000"  // The maximum number of features to retain.
 
 Default Attribute: 
-    		*float scaleFactor = 1.2f;  // Pyramid decimation ratio, greater than 1.
-    		*int   nlevels = 8;         // The number of pyramid levels.
-    		*int   edgeThreshold = 31;  // This is size of the border where the features are not detected.
-    		*int   firstLevel = 0;      // The level of pyramid to put source image to.
-    		*int   WTA_K = 2;           // The number of points that produce each element of the oriented BRIEF descriptor.
-    		*auto  scoreType = cv::ORB::HARRIS_SCORE; // HARRIS_SCORE / FAST_SCORE algorithm is used to rank features.
-    		*int   patchSize = 31;      // Size of the patch used by the oriented BRIEF descriptor.
-    		*int   fastThreshold = 20;  // The FAST threshold.
+    		* float scaleFactor = 1.2f;  // Pyramid decimation ratio, greater than 1.
+    		* int   nlevels = 8;         // The number of pyramid levels.
+    		* int   edgeThreshold = 31;  // This is size of the border where the features are not detected.
+    		* int   firstLevel = 0;      // The level of pyramid to put source image to.
+    		* int   WTA_K = 2;           // The number of points that produce each element of the oriented BRIEF descriptor.
+    		* auto  scoreType = cv::ORB::HARRIS_SCORE; // HARRIS_SCORE / FAST_SCORE algorithm is used to rank features.
+    		* int   patchSize = 31;      // Size of the patch used by the oriented BRIEF descriptor.
+    		* int   fastThreshold = 20;  // The FAST threshold.
 
 
 ####"AKAZE": 
@@ -136,13 +136,13 @@ detector = cv::AKAZE::create();
 detector->detect(img, keypoints);
 
 Default Attribute: 
-		*auto  descriptor_type = cv::AKAZE::DESCRIPTOR_MLDB;
-    		*int   descriptor_size = 0;        // Size of the descriptor in bits. 0 -> Full size
-    		*int   descriptor_channels = 3;    // Number of channels in the descriptor (1, 2, 3).
-    		*float threshold = 0.001f;         //   Detector response threshold to accept point.
-    		*int   nOctaves = 4;               // Maximum octave evolution of the image.
-    		*int   nOctaveLayers = 4;          // Default number of sublevels per scale level.
-    		*auto  diffusivity = cv::KAZE::DIFF_PM_G2; // Diffusivity type. DIFF_PM_G1, DIFF_PM_G2,
+		* auto  descriptor_type = cv::AKAZE::DESCRIPTOR_MLDB;
+    		* int   descriptor_size = 0;        // Size of the descriptor in bits. 0 -> Full size
+    		* int   descriptor_channels = 3;    // Number of channels in the descriptor (1, 2, 3).
+    		* float threshold = 0.001f;         //   Detector response threshold to accept point.
+    		* int   nOctaves = 4;               // Maximum octave evolution of the image.
+    		* int   nOctaveLayers = 4;          // Default number of sublevels per scale level.
+    		* auto  diffusivity = cv::KAZE::DIFF_PM_G2; // Diffusivity type. DIFF_PM_G1, DIFF_PM_G2,
     							  //DIFF_WEICKERT or DIFF_CHARBONNIER.
 		
 
@@ -153,8 +153,8 @@ Default Attribute:
 
 ###MP.4 Keypoint Descriptor
 
-	*Following Keypoint Descriptor are used BRIEF, ORB, FREAK, AKAZE and SIFT
-	*To implement the above descriptor OpenCV libraries are used. 
+* Following Keypoint Descriptor are used BRIEF, ORB, FREAK, AKAZE and SIFT
+* To implement the above descriptor OpenCV libraries are used. 
 
 Note: All the descriptor are declared inside "descKeypoints()" function. 
 
@@ -172,20 +172,20 @@ extractor = cv::xfeatures2d::BriefDescriptorExtractor::create();
 extractor->compute(img, keypoints, descriptors);
 
 Default Attribute: 
-		*int 	bytes = 32,
-		*bool 	use_orientation = false
+		* int 	bytes = 32,
+		* bool 	use_orientation = false
 
 ####"SIFT":
 extractor = cv::xfeatures2d::SIFT::create();
 extractor->compute(img, keypoints, descriptors);
 
 Default Attribute: 
-		*int nfeatures = 0; // The number of best features to retain.
-      		*int nOctaveLayers = 3; // The number of layers in each octave. 3 is the value used in D. Lowe paper.
-      		*// The contrast threshold used to filter out weak features in semi-uniform (low-contrast) regions.
-      		*double contrastThreshold = 0.04;
-      		*double edgeThreshold = 10; // The threshold used to filter out edge-like features.
-      		*double sigma = 1.6; // The sigma of the Gaussian applied to the input image at the octave #0.
+		* int nfeatures = 0; // The number of best features to retain.
+      		* int nOctaveLayers = 3; // The number of layers in each octave. 3 is the value used in D. Lowe paper.
+      		* // The contrast threshold used to filter out weak features in semi-uniform (low-contrast) regions.
+      		* double contrastThreshold = 0.04;
+      		* double edgeThreshold = 10; // The threshold used to filter out edge-like features.
+      		* double sigma = 1.6; // The sigma of the Gaussian applied to the input image at the octave #0.
 
 
 ####"orb":
@@ -193,54 +193,55 @@ extractor = cv::ORB::create(nfeatures);
 extractor->compute(img, keypoints, descriptors);
 
 Attribute Passed:
-		*int nfeatures = 1000;  // The maximum number of features to retain.
+		* int nfeatures = 1000;  // The maximum number of features to retain.
 Default Attribute:
-		*float scaleFactor = 1.2f;  // Pyramid decimation ratio, greater than 1.
-      		*int   nlevels = 8;         // The number of pyramid levels.
-      		*int   edgeThreshold = 31;  // This is size of the border where the features are not detected.
-      		*int   firstLevel = 0;      // The level of pyramid to put source image to.
-      		*int   WTA_K = 2;           // The number of points that produce each element of the oriented BRIEF descriptor.
-      		*auto  scoreType = cv::ORB::HARRIS_SCORE; // HARRIS_SCORE / FAST_SCORE -- to rank features.
-      		*int   patchSize = 31;      // Size of the patch used by the oriented BRIEF descriptor.
-      		*int   fastThreshold = 20;  // The FAST threshold.
+		* float scaleFactor = 1.2f;  // Pyramid decimation ratio, greater than 1.
+      		* int   nlevels = 8;         // The number of pyramid levels.
+      		* int   edgeThreshold = 31;  // This is size of the border where the features are not detected.
+      		* int   firstLevel = 0;      // The level of pyramid to put source image to.
+      		* int   WTA_K = 2;           // The number of points that produce each element of the oriented BRIEF descriptor.
+      		* auto  scoreType = cv::ORB::HARRIS_SCORE; // HARRIS_SCORE / FAST_SCORE -- to rank features.
+      		* int   patchSize = 31;      // Size of the patch used by the oriented BRIEF descriptor.
+      		* int   fastThreshold = 20;  // The FAST threshold.
 
 ####"FREAK": 
 extractor = cv::xfeatures2d::FREAK::create();
 extractor->compute(img, keypoints, descriptors);
 
 Default Attribute:
-		*bool	orientationNormalized = true;  // Enable orientation normalization.
-      		*bool	scaleNormalized = true;        // Enable scale normalization.
-      		*float patternScale = 22.0f;         // Scaling of the description pattern.
-      		*int	nOctaves = 4;                     // Number of octaves covered by the detected keypoints.
-      		*const std::vector< int > & 	selectedPairs = std::vector< int >(); // (Optional) user defined selected pairs indexes,
+		* bool	orientationNormalized = true;  // Enable orientation normalization.
+      		* bool	scaleNormalized = true;        // Enable scale normalization.
+      		* float patternScale = 22.0f;         // Scaling of the description pattern.
+      		* int	nOctaves = 4;                     // Number of octaves covered by the detected keypoints.
+      		* const std::vector< int > & 	selectedPairs = std::vector< int >(); // (Optional) user defined selected pairs indexes,
 
 ####"AKAZE":
 extractor = cv::AKAZE::create();
 extractor->compute(img, keypoints, descriptors);
 
 Default Attribute:
-		*auto  descriptor_type = cv::AKAZE::DESCRIPTOR_MLDB; // Type of the extracted descriptor: DESCRIPTOR_KAZE, DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
-      		*int   descriptor_size = 0;        // Size of the descriptor in bits. 0 -> Full size
-      		*int   descriptor_channels = 3;    // Number of channels in the descriptor (1, 2, 3).
-      		*float threshold = 0.001f;         //   Detector response threshold to accept point.
-      		*int   nOctaves = 4;               // Maximum octave evolution of the image.
-      		*int   nOctaveLayers = 4;          // Default number of sublevels per scale level.
-      		*auto  diffusivity = cv::KAZE::DIFF_PM_G2; // Diffusivity type. DIFF_PM_G1, DIFF_PM_G2,
+		* auto  descriptor_type = cv::AKAZE::DESCRIPTOR_MLDB; // Type of the extracted descriptor: DESCRIPTOR_KAZE, DESCRIPTOR_KAZE_UPRIGHT, DESCRIPTOR_MLDB or DESCRIPTOR_MLDB_UPRIGHT.
+      		* int   descriptor_size = 0;        // Size of the descriptor in bits. 0 -> Full size
+      		* int   descriptor_channels = 3;    // Number of channels in the descriptor (1, 2, 3).
+      		* float threshold = 0.001f;         //   Detector response threshold to accept point.
+      		* int   nOctaves = 4;               // Maximum octave evolution of the image.
+      		* int   nOctaveLayers = 4;          // Default number of sublevels per scale level.
+      		* auto  diffusivity = cv::KAZE::DIFF_PM_G2; // Diffusivity type. DIFF_PM_G1, DIFF_PM_G2,
      							  //                   DIFF_WEICKERT or DIFF_CHARBONNIER.
 ###MP.5 Descriptor Matching. 
 
-	*FLANN: "fast library for approximate nearest neighbors". FLANN trains an indexing structure for walking through potential matching candidates that is created using concepts from machine learning. The library builds a very efficient data structure (a KD-tree) to search for matching pairs and avoids the exhaustive search of the brute force approach. It is therefore faster while the results are still very good, depending on the matching parameters.
+* FLANN: "fast library for approximate nearest neighbors". FLANN trains an indexing structure for walking through potential matching candidates that is created using concepts from machine learning. The library builds a very efficient data structure (a KD-tree) to search for matching pairs and avoids the exhaustive search of the brute force approach. It is therefore faster while the results are still very good, depending on the matching parameters.
 
-	*k-nearest neighbor selection: A very efficient way of lowering the number of false positives is to compute the nearest neighbor distance ratio. The main idea is to not apply the threshold on the SSD directly. Instead, for each keypoint in the source image, the two best matches are located in the reference image and the ratio between the descriptor distances is computed. Then, a threshold is applied to the ratio to sort out ambiguous matches. The figure below illustrates the principle.
-		*In this project, k is set to 2. 
+* k-nearest neighbor selection: A very efficient way of lowering the number of false positives is to compute the nearest neighbor distance ratio. The main idea is to not apply the threshold on the SSD directly. Instead, for each keypoint in the source image, the two best matches are located in the reference image and the ratio between the descriptor distances is computed. Then, a threshold is applied to the ratio to sort out ambiguous matches. The figure below illustrates the principle.
+
+* In this project, k is set to 2. 
 
 ###MP.6 Descriptor Distance Ratio
 
-	*In K-Nearest-Neighbor matching method, for each descriptor(keypoint) in the source image, K=2 best matches are found in the reference image. 
-	*The ratio between the two descriptor distances is computed. 
-	*The computed value is compared with some threshold. 
-	*If the computed value is less than the threshold, the best match in the reference image is accepted. But if the computed value is more than the threshold, the two descriptors from the reference image are considered ambiguous and the match is discarded 
+* In K-Nearest-Neighbor matching method, for each descriptor(keypoint) in the source image, K=2 best matches are found in the reference image. 
+* The ratio between the two descriptor distances is computed. 
+* The computed value is compared with some threshold. 
+* If the computed value is less than the threshold, the best match in the reference image is accepted. But if the computed value is more than the threshold, the two descriptors from the reference image are considered ambiguous and the match is discarded 
 
 ### Total Number of Keypoints detected by each of the detectors(SHITOMASI, HARRIS, FAST, BRISK, ORB, AKAZE, and SIFT.) accross all the 10 images. Additionally average time required for the detector and avarage size of the neighbourhood is also included. 
 
