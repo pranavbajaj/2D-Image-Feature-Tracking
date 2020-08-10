@@ -245,7 +245,7 @@ Default Attribute:
 
 ### Total Number of Keypoints detected by each of the detectors(SHITOMASI, HARRIS, FAST, BRISK, ORB, AKAZE, and SIFT.) accross all the 10 images. Additionally average time required for the detector and avarage size of the neighbourhood is also included. 
 
-<img src="images/total_points_detected.png" />
+<img src="images/total_points_detected" width="820" height="248" />
 
 ### MP.7 Performance Evaluation 1: Number of Keypoints on the preceding vechicle. 
 
