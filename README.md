@@ -2,14 +2,7 @@
 
 <img src="images/keypoints.png" width="820" height="248" />
 
-The idea of the camera course is to build a collision detection system - that's the overall goal for the Final Project. As a preparation for this, you will now build the feature tracking part and test various detector / descriptor combinations to see which ones perform best. This mid-term project consists of four parts:
-
-* First, you will focus on loading images, setting up data structures and putting everything into a ring buffer to optimize memory load. 
-* Then, you will integrate several keypoint detectors such as HARRIS, FAST, BRISK and SIFT and compare them with regard to number of keypoints and speed. 
-* In the next part, you will then focus on descriptor extraction and matching using brute force and also the FLANN approach we discussed in the previous lesson. 
-* In the last part, once the code framework is complete, you will test the various algorithms in different combinations and compare them with regard to some performance measures. 
-
-See the classroom instruction and code comments for more details on each of these parts. Once you are finished with this project, the keypoint matching part will be set up and you can proceed to the next lesson, where the focus is on integrating Lidar points and on object detection using deep-learning. 
+The idea of the camera project is to build a collision detection system. 1st step for that is to build a feature tracker. 
 
 ## Dependencies for Running Locally
 * cmake >= 2.8
@@ -34,19 +27,10 @@ See the classroom instruction and code comments for more details on each of thes
 4. Run it: `./2D_feature_tracking`.
 
 
-# Project Rubrics
- 
 
-### MP.1 Data Buffer
+### Keypoint Detection
 
-* To optimize the loading process for the images, a data buffer has been implemented.  
-  * The new data arrives, it is added(.push_back()) at the end of a vector; named "dataBuffer".   
-  * If the "dataBuffer" size increase more than 2, the oldest one is deleted (.erase()) and then the new one is added(.puch) at the end of the vector. 
-  * The above cycle goes one until all the data has been processed. 
-
-### MP.2 Keypoint Detection
-
-* Following detector are used: SHITOMASI, HARRIS, FAST, BRISK, ORB, AKAZE, and SIFT. 
+* Following detectors are used: SHITOMASI, HARRIS, FAST, BRISK, ORB, AKAZE, and SIFT. 
 * To implement the above detectors, OpenCV libraries are used. 
  
 Note: For SHITOMASI(detKeypointsShiTomasi()) and HARRIS(detKeypointsHarris()), spereate function is declared in matching2D_Student.cpp code, where as rest of the detector are declared under one function(detKeypointsModer())
@@ -228,17 +212,17 @@ Default Attribute:
 * int   nOctaveLayers = 4;          // Default number of sublevels per scale level.
 * auto  diffusivity = cv::KAZE::DIFF_PM_G2; // Diffusivity type. DIFF_PM_G1, DIFF_PM_G2,
      							  //                   DIFF_WEICKERT or DIFF_CHARBONNIER.
-### MP.5 Descriptor Matching. 
+### Descriptor Matching. 
 
-* FLANN: "fast library for approximate nearest neighbors". FLANN trains an indexing structure for walking through potential matching candidates that is created using concepts from machine learning. The library builds a very efficient data structure (a KD-tree) to search for matching pairs and avoids the exhaustive search of the brute force approach. It is therefore faster while the results are still very good, depending on the matching parameters.
+* FLANN: "Fast library for approximate nearest neighbors". FLANN trains an indexing structure for walking through potential matching candidates that is created using concepts from machine learning. The library builds a very efficient data structure (a KD-tree) to search for matching pairs and avoids the exhaustive search of the brute force approach. It is therefore faster while the results are still very good, depending on the matching parameters.
 
-* k-nearest neighbor selection: A very efficient way of lowering the number of false positives is to compute the nearest neighbor distance ratio. The main idea is to not apply the threshold on the SSD directly. Instead, for each keypoint in the source image, the two best matches are located in the reference image and the ratio between the descriptor distances is computed. Then, a threshold is applied to the ratio to sort out ambiguous matches. The figure below illustrates the principle.
+* k-nearest neighbor selection: A very efficient way of lowering the number of false positives is to compute the nearest neighbor distance ratio. The main idea is to not apply the threshold on the SSD directly. Instead, for each key point in the source image, the two best matches are located in the reference image and the ratio between the descriptor distances is computed. Then, a threshold is applied to the ratio to sort out ambiguous matches. The figure below illustrates the principle.
 
 * In this project, k is set to 2. 
 
-### MP.6 Descriptor Distance Ratio
+### Descriptor Distance Ratio
 
-* In K-Nearest-Neighbor matching method, for each descriptor(keypoint) in the source image, K=2 best matches are found in the reference image. 
+* In the K-Nearest-Neighbor matching method, for each descriptor(keypoint) in the source image, K=2 best matches are found in the reference image. 
 * The ratio between the two descriptor distances is computed. 
 * The computed value is compared with some threshold. 
 * If the computed value is less than the threshold, the best match in the reference image is accepted. But if the computed value is more than the threshold, the two descriptors from the reference image are considered ambiguous and the match is discarded 
@@ -247,11 +231,11 @@ Default Attribute:
 
 <img src="images/total_points_detected.PNG" width="820" height="248" />
 
-### MP.7 Performance Evaluation 1: Number of Keypoints on the preceding vechicle. 
+### Performance Evaluation 1: Number of Keypoints on the preceding vechicle. 
 
 <img src="images/Task_7.PNG" width="820" height="248" />
 
-### Mp.8  Performance Evaluation 2
+### MPerformance Evaluation 2
 
 #### A. SHITOMASI detector. 
 
@@ -283,7 +267,7 @@ Default Attribute:
 
 
 
-### MP.9 Performance Evaluation 3. Time taken for keypoint detection and descriptor extraction.
+### Performance Evaluation 3. Time is taken for keypoint detection and descriptor extraction.
 
 Note: The performance is evaluated only in terms of speed, not accuracy. 
  
@@ -291,9 +275,9 @@ Note: The performance is evaluated only in terms of speed, not accuracy.
 
 
 * FAST is the fasted detector for the list. 
-* BRISK, BRIEF and ORB have better performance than rest of the descriptor. 
+* BRISK, BRIEF, and ORB have better performance than the rest of the descriptors. 
 
-So according to me top 3 combinations are 
+So according to me the top 3 combinations are 
 1. FAST detector and BRISK descriptor. 
 2. FAST detector and BRIEF descriptor. 
 3. FAST detector and ORB descriptor. 
